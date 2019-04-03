@@ -1,1 +1,1 @@
-# gifTastic2.0
+# gifTastic
