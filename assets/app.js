@@ -2,7 +2,7 @@
 
 var gifNames = ["Rick and Morty", "Its alsways Sunny", "Game of Thrones", "wilfred ", "Dragon Ball Super",]
 
-
+// adding first buttons from the array above
 function renderButtons() {
 
   $("#start").empty();
@@ -23,6 +23,15 @@ function renderButtons() {
   }
 }
 
+// clearing gifs on the screen
+
+$("#clearGifs").on("click", function () {
+  $("#start").empty();
+  $("#gif-goes-here").html("");
+  renderButtons();
+});
+
+// crating the gifs from the api and pushing them to the dom
 $(document).on("click", "button", function () {
 
   var gif = $(this).attr("data-gif");
@@ -67,6 +76,7 @@ $(document).on("click", "button", function () {
     });
 });
 
+//function to animate the gifs
 $(document).on("click", ".gif", function () {
 
   var state = $(this).attr("data-state");
@@ -86,21 +96,27 @@ $(document).on("click", ".gif", function () {
   }
 });
 
+//function to add the new gifs to the page
 $("#add-gif").on("click", function (event) {
   event.preventDefault();
+  if ($("#user-input").val() === "") {
 
-  // This lne grabs the input from the textbox
-  var userGif = $("#user-input").val().trim();
+  }
+  else {
+    // This lne grabs the input from the textbox
+    var userGif = $("#user-input").val().trim();
 
-  // The movie from the textbox is then added to our array
-  gifNames.push(userGif);
+    // The movie from the textbox is then added to our array
+    gifNames.push(userGif);
 
-  // Calling renderButtons which handles the processing of our movie array
-  renderButtons();
+    // Calling renderButtons which handles the processing of our movie array
+    renderButtons();
 
-  $("#user-input").val("");
+    $("#user-input").val("");
+  }
 });
 
+// calling the function to display the gif buttons
 
 renderButtons();
 
